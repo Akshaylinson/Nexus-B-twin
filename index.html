@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS — Persistent Business & Trust Digital Twin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <div id="app" class="min-h-screen">
+    <header class="border-b border-slate-800 bg-slate-950/95 px-5 py-4 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div><div class="flex items-center gap-2"><span class="brand-mark">N</span><h1 class="text-lg font-semibold tracking-[.16em]">NEXUS</h1></div><p class="mt-1 text-xs text-slate-400">Persistent Business &amp; Trust Digital Twin</p></div>
+        <div class="flex items-center gap-2 text-xs"><span class="status-dot"></span><span id="storage-note" class="text-slate-400">Stored locally in this browser</span><button id="settings-btn" class="button ghost">Settings</button></div>
+      </div>
+    </header>
+    <main class="px-5 py-5 lg:px-8">
+      <section class="mb-5 flex flex-wrap items-center justify-between gap-3"><div><p class="eyebrow">WORLD / <span id="world-name">Golden Axis — Sample World</span></p><h2 id="date-title" class="mt-1 text-2xl font-medium tracking-tight"></h2></div><div class="flex flex-wrap gap-2"><button id="play-btn" class="button">▶ Play</button><button data-advance="day" class="button ghost">+1 Day</button><button data-advance="month" class="button ghost">+1 Month</button><button data-advance="year" class="button ghost">+1 Year</button><input id="date-picker" type="date" class="input compact" /></div></section>
+      <section id="metrics" class="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-8"></section>
+      <section class="mt-5 grid gap-5 xl:grid-cols-[1fr_330px]">
+        <div class="panel min-w-0"><div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 px-4 py-3"><nav id="modes" class="flex flex-wrap gap-1"><button data-mode="world" class="mode active">World</button><button data-mode="ownership" class="mode">Ownership</button><button data-mode="financial" class="mode">Financial</button><button data-mode="assets" class="mode">Assets</button><button data-mode="entities" class="mode">Entities</button><button data-mode="timeline" class="mode">Timeline</button><button data-mode="events" class="mode">Events</button></nav><div class="text-xs text-slate-500">Click a node to inspect it</div></div><div id="graph"></div><div id="table-view" class="hidden"></div></div>
+        <aside id="detail-panel" class="panel p-5"><p class="eyebrow">SELECT AN ENTITY</p><h3 class="mt-3 text-lg font-medium">Ecosystem map</h3><p class="mt-2 text-sm leading-6 text-slate-400">Select a node to review its calculated state, relationships, configured flows, and records.</p><div class="notice mt-6">The administrator defines reality. NEXUS only calculates configured rules.</div></aside>
+      </section>
+    </main>
+  </div>
+  <div class="fixed bottom-5 left-5 z-20 flex flex-wrap gap-2"><button class="button" data-new="entity">+ Entity</button><button class="button ghost" data-new="relationship">+ Relationship</button><button class="button ghost" data-new="flow">+ Financial Flow</button><button class="button ghost" data-new="asset">+ Asset</button><button class="button ghost" data-new="employee">+ Employee</button><button class="button ghost" data-new="investment">+ Investment</button><button class="button ghost" data-new="contract">+ Contract</button><button class="button ghost" data-new="event">+ Event</button></div>
+  <dialog id="modal" class="modal"><form id="record-form" method="dialog"><div id="modal-content"></div></form></dialog>
+  <input id="import-file" type="file" accept="application/json,.json" class="hidden" />
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
